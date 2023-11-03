@@ -5,7 +5,8 @@ import { addCartItems, fetchCartItems } from "./Api";
 const initialState = {
 isCartOpen: false,
 items: [],
-requestStatus: null
+requestStatus: null,
+isItemsChanged: false,
 }
 
 const cartSlice = createSlice({
@@ -16,6 +17,7 @@ const cartSlice = createSlice({
             state.isCartOpen = !state.isCartOpen;
         },
         addItemToCart(state, action) {
+            state.isItemsChanged = true;
             const newItem = action.payload;
             const existingItem = state.items.find(item => item.id === newItem.id);
             if (existingItem) {

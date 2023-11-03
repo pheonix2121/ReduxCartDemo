@@ -14,7 +14,7 @@ export const fetchCartItems = createAsyncThunk('fetchCartItem', async () => {
 });
 
 export const addCartItems = createAsyncThunk('addCartItem', async ({ items }) => {
-    console.log(items);
+
     try {
         const res = await fetch('https://reduxcartdemo-38714-default-rtdb.asia-southeast1.firebasedatabase.app/cart.json', {
             method: 'PUT',

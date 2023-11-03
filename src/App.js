@@ -4,7 +4,7 @@ import Layout from './components/Layout/Layout';
 import Products from './components/Shop/Products';
 import { useEffect } from 'react';
 import { addCartItems, fetchCartItems } from './Store/Api';
-import Notification from './components/UI/Notify';
+import Notification from "./components/UI/Notify"
 
 let isInitial = false;
 
@@ -18,11 +18,10 @@ function App() {
   }, [])
 
   useEffect(() => {
-    if (isInitial) {
-      isInitial = true;
-      return;
+    if (cart.isItemsChanged) {
+      dispatch(addCartItems(cart))
     }
-    dispatch(addCartItems(cart))
+    
   }, [cart.items, dispatch])
   return (
     <>
